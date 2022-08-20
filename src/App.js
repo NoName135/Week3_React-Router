@@ -20,7 +20,7 @@ function Layout() {
             Kaohsiung Travel
           </Link>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler me-3"
             type="button"
             data-toggle="collapse"
             data-target="#navbarNav"
