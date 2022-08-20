@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,12 +35,27 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
-.header, .footer {
-  border: 5px solid #1b9ba2;
+
+.containerApp {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.mainArea {
+  flex: 1;
 }
 
 .img-cover {
   object-fit: cover;
+}
+
+.tourCard-img {
+  background-color: rgba(0, 0, 0, .5);
+  color: white;
+}
+.tourCard-img:hover{
+  background-color: rgba(0, 0, 0, 0);
+  color: rgba(0, 0, 0, 0);
 }

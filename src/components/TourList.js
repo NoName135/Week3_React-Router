@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 
 const TourList = () => {
   const location = useLocation().state;
@@ -65,7 +65,7 @@ const TourList = () => {
             setSearch(e.target.value);
           }}
         />
-        <label for="search" style={{display: "block", "text-align": "left"}}>search</label>
+        <label for="search" style={{display: "block", "text-align": "left"}}>Search</label>
       </div>
       <div className="row">
         {data
@@ -86,7 +86,7 @@ const TourList = () => {
                   <Link
                     to={`/tour/${item.Id}`} state={{search: search, page: page, targetPage: targetPage}}
                   >
-                    <div className="card bg-black text-white">
+                    <div className="card bg-black">
                       <img
                         src={item.Picture1}
                         className="card-img-top img-cover"
@@ -94,8 +94,7 @@ const TourList = () => {
                       />
                     </div>
                     <div
-                      className="card-img-overlay d-flex align-items-end text-white"
-                      style={{ 'background-color': 'rgba(0, 0, 0, .3)' }}
+                      className="card-img-overlay d-flex align-items-end tourCard-img"
                     >
                       <h5>{item.Name}</h5>
                     </div>

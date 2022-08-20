@@ -1,33 +1,74 @@
 import * as React from 'react';
-import { Routes, Route, Link, Outlet, useLocation } from 'react-router-dom';
+import { Routes, Route, Link, Outlet } from 'react-router-dom';
 import './App.css';
-import TourList from './components/TourList.js'
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
+
+import TourList from './components/TourList.js';
 import TourDetail from './components/TourDetail.js';
 
 function Layout() {
+  const [isNavCollapsed, setIsNavCollapsed] = React.useState(true);
+  const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
+
   return (
-    <>
-      <div className="header">
-        <nav>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/faq">FAQ</Link>
-          </li>
-          <li>
-            <Link to="/tour">Tour</Link>
-          </li>
+    <div className="containerApp bg-light">
+      <div className="mainArea">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary mb-3">
+          <Link to="/" class="navbar-brand px-5">
+            Kaohsiung Travel
+          </Link>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded={!isNavCollapsed ? true : false}
+            aria-label="Toggle navigation"
+            onClick={handleNavCollapse}
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`}
+            id="navbarNav"
+          >
+            <ul class="navbar-nav ms-auto me-lg-5">
+              <li class="nav-item pe-lg-5">
+                <Link to="/" class="nav-link">
+                  Home
+                </Link>
+              </li>
+              <li class="nav-item pe-lg-5">
+                <Link to="/about" class="nav-link">
+                  About
+                </Link>
+              </li>
+              <li class="nav-item pe-lg-5">
+                <Link to="/FAQ" class="nav-link">
+                  FAQ
+                </Link>
+              </li>
+              <li class="nav-item">
+                <Link to="/Tour" class="nav-link">
+                  Tour
+                </Link>
+              </li>
+            </ul>
+          </div>
         </nav>
+
+        <main>
+          <Outlet />
+        </main>
       </div>
-      <main>
-        <Outlet />
-      </main>
-      <div className="footer">Footer</div>
-    </>
+
+      <footer className="mt-auto bg-secondary text-white py-3">
+        Copyright© 2022 Ezekiel Lin. All Rights Reserved.
+      </footer>
+    </div>
   );
 }
 
@@ -58,7 +99,10 @@ function FAQ() {
     <>
       <main>
         <h2>FAQ</h2>
-        <p>QAQ</p>
+        <p>
+          A Frequently Asked Question (FAQ) page contains a list of questions
+          and answers pertaining to a particular topic.
+        </p>
       </main>
     </>
   );
@@ -88,7 +132,6 @@ function NotFound () {
 function App() {
   return (
     <div className="App">
-      <h1>Welcome to Kaohsiung Travel !</h1>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />} />

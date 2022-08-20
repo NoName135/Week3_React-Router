@@ -27,7 +27,7 @@ const TourDetail = () => {
       <div className="row  justify-content-center">
         <div className="card col-8 my-3 align-items-center">
           <div className="card-title">
-            <h2>{data.Name}</h2>
+            <h2 className="py-3">{data.Name}</h2>
             <img src={data.Picture1} alt={data.Name} class="card-img-top" />
           </div>
           <div className="card-body">
