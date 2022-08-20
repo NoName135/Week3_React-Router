@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.header, .footer {
+  border: 5px solid #1b9ba2;
+}
+
+.img-cover {
+  object-fit: cover;
+}
