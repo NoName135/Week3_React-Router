@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Week3_React-Router/static/css/main.073c9b0a.css",
-    "main.js": "/Week3_React-Router/static/js/main.aba2e49f.js",
+    "main.css": "/Week3_React-Router/static/css/main.5ff0ca2e.css",
+    "main.js": "/Week3_React-Router/static/js/main.a0b57e1e.js",
     "static/js/787.e8cf4ead.chunk.js": "/Week3_React-Router/static/js/787.e8cf4ead.chunk.js",
     "index.html": "/Week3_React-Router/index.html",
-    "main.073c9b0a.css.map": "/Week3_React-Router/static/css/main.073c9b0a.css.map",
-    "main.aba2e49f.js.map": "/Week3_React-Router/static/js/main.aba2e49f.js.map",
+    "main.5ff0ca2e.css.map": "/Week3_React-Router/static/css/main.5ff0ca2e.css.map",
+    "main.a0b57e1e.js.map": "/Week3_React-Router/static/js/main.a0b57e1e.js.map",
     "787.e8cf4ead.chunk.js.map": "/Week3_React-Router/static/js/787.e8cf4ead.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.aba2e49f.js"
+    "static/css/main.5ff0ca2e.css",
+    "static/js/main.a0b57e1e.js"
   ]
 }
