@@ -9,6 +9,7 @@ const TourList = () => {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState([]);
   const [targetPage, setTargetPage] = useState(1);
+  const [backFromDetail, setBackFromDetail] = useState(true);
 
   useEffect(() => {
     fetch(
@@ -43,8 +44,8 @@ const TourList = () => {
       new Array(Math.ceil(dataFilterLen / 20)).fill('').map((_, i) => i + 1)
     );
 
-    if(!search){
-      return
+    if(!search || backFromDetail){
+      setBackFromDetail(false)
     }else{
       setTargetPage(1);
     }
