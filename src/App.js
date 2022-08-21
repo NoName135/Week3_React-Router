@@ -13,7 +13,7 @@ function Layout() {
   const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
 
   return (
-    <div className="containerApp bg-light">
+    <div className="container-fluid bg-light text-center container-height100">
       <div className="mainArea">
         <nav class="navbar navbar-expand-lg navbar-dark bg-secondary mb-3">
           <Link to="/" class="navbar-brand px-5">
@@ -60,7 +60,7 @@ function Layout() {
           </div>
         </nav>
 
-        <main>
+        <main className="container">
           <Outlet />
         </main>
       </div>

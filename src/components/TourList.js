@@ -18,18 +18,19 @@ const TourList = () => {
     )
       .then((res) => res.json())
       .then((jsonData) => {
-        const aryData = (jsonData.data.XML_Head.Infos.Info);
+        const aryData = jsonData.data.XML_Head.Infos.Info;
         setData(aryData);
-        if(!location){
+        if (!location) {
           setPage(
             new Array(Math.ceil(aryData.length / 20))
               .fill('')
               .map((_, i) => i + 1)
           );
-        }else {
+        } else {
           setPage(location.page);
         }
       });
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -39,12 +40,13 @@ const TourList = () => {
     setPage(() =>
       new Array(Math.ceil(dataFilterLen / 20)).fill('').map((_, i) => i + 1)
     );
-    if(!location || !firstRender){
+    if (!location || !firstRender) {
       setTargetPage(1);
-    }else{
-      setTargetPage(location.targetPage)
-      setFirstRender(false)
+    } else {
+      setTargetPage(location.targetPage);
+      setFirstRender(false);
     }
+    // eslint-disable-next-line
   },[search]);
 
   return (
@@ -84,19 +86,24 @@ const TourList = () => {
               <div key={i} className="col-md-6 py-2">
                 <div className="card">
                   <Link
-                    to={`/tour/${item.Id}`} state={{search: search, page: page, targetPage: targetPage}}
+                    to={`/tour/${item.Id}`}
+                    state={{
+                      search: search,
+                      page: page,
+                      targetPage: targetPage,
+                    }}
                   >
                     <div className="card bg-black">
                       <img
                         src={item.Picture1}
                         className="card-img-top img-cover"
                         height="155px"
+                        alt={item.Name}
                       />
                     </div>
-                    <div
-                      className="card-img-overlay d-flex align-items-end tourCard-img"
-                    >
-                      <h5>{item.Name}</h5>
+                    <div className="card-img-overlay d-flex flex-column justify-content-around tourCard-img">
+                      <h4>{item.Name}</h4>
+                      <h6>[◉"]　{item.Picdescribe1}　[◉"]</h6>
                     </div>
                   </Link>
                 </div>
@@ -125,18 +132,32 @@ const TourList = () => {
           return (
             <li
               key={i}
-              className={item === targetPage ? 'active' : ''}
+              className="d-none d-md-block {item === targetPage ? 'active' : ''}"
               onClick={() => {
                 setTargetPage(item);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
             >
-              <a class="page-link" href="#/tour">
+              <a className="page-link" href="#/tour">
                 {item}
               </a>
             </li>
           );
         })}
+        {page
+        .filter((item, i) => {
+            return item === targetPage
+        })
+        .map((item, i) => {
+          return (
+            <li key={i} className="d-block d-md-none">
+              <a className="page-link" disabled href={() => false}>
+                {item}
+              </a>
+            </li>
+          );
+        })
+        }
         <li
           className={targetPage === page.length ? 'disabled' : ''}
           onClick={() => {

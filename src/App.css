@@ -1,8 +1,8 @@
-.App {
+/* .App {
   text-align: center;
 }
 
-/* .App-logo {
+.App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -37,8 +37,8 @@
   }
 } */
 
-
-.containerApp {
+/* Footer height 100% */
+.container-height100 {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -46,13 +46,14 @@
 .mainArea {
   flex: 1;
 }
+/* Footer height 100% */
 
 .img-cover {
   object-fit: cover;
 }
 
 .tourCard-img {
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, .6);
   color: white;
 }
 .tourCard-img:hover{

@@ -15,17 +15,18 @@ const TourDetail = () => {
       .then((res) => res.json())
       .then((jsonData) => {
         const aryData = jsonData.data.XML_Head.Infos.Info;
-        const selectData = aryData.filter((item,i) => {
+        const selectData = aryData.filter((item, i) => {
           return item.Id === Id;
         });
-        setData(selectData[0])
+        setData(selectData[0]);
       });
+    // eslint-disable-next-line
   }, []);
 
   return (
     <div className="container">
       <div className="row  justify-content-center">
-        <div className="card col-8 my-3 align-items-center">
+        <div className="card col-8 mt-3 align-items-center">
           <div className="card-title">
             <h2 className="py-3">{data.Name}</h2>
             <img src={data.Picture1} alt={data.Name} class="card-img-top" />
@@ -36,19 +37,19 @@ const TourDetail = () => {
               style={{ display: 'block', 'text-align': 'left' }}
             >
               <div>
-                <p>
+                <p className="border-bottom border-secondary">
                   <b>地址：</b>
                   {data.Add}
                 </p>
               </div>
               <div>
-                <p>
+                <p className="border-bottom border-secondary">
                   <b>電話：</b>
                   {data.Tel}
                 </p>
               </div>
               <div>
-                <p>
+                <p className="border-bottom border-secondary">
                   <b>營業時間：</b>
                   {data.Opentime}
                 </p>
@@ -60,7 +61,10 @@ const TourDetail = () => {
           </div>
         </div>
       </div>
-      <Link to={`/tour`} state={{ search: search, page: page, targetPage: targetPage }}>
+      <Link
+        to={`/tour`}
+        state={{ search: search, page: page, targetPage: targetPage }}
+      >
         <button type="button" className="btn btn-success text-white my-3">
           回列表
         </button>
