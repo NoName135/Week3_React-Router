@@ -1,7 +1,6 @@
 import {useState, useEffect} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-
 const TourList = () => {
   const location = useLocation().state;
   // let locationSearch = location ? location.search : "";
