@@ -4,13 +4,12 @@ import { Link, useLocation } from 'react-router-dom';
 
 const TourList = () => {
   const location = useLocation().state;
-  let locationSearch = location ? location.search : "";
+  // let locationSearch = location ? location.search : "";
 
   const [data, setData] = useState([]);
-  const [search, setSearch] = useState(locationSearch);
+  const [search, setSearch] = useState("");
   const [page, setPage] = useState([]);
   const [targetPage, setTargetPage] = useState(1);
-  const [firstRender, setFirstRender] = useState(true);
 
   useEffect(() => {
     fetch(
@@ -28,6 +27,10 @@ const TourList = () => {
           );
         } else {
           setPage(location.page);
+          setSearch(location.search);
+          setTargetPage(location.targetPage);
+          // 清除 React Hooks
+          window.history.replaceState({}, document.title);
         }
       });
     // eslint-disable-next-line
@@ -40,11 +43,11 @@ const TourList = () => {
     setPage(() =>
       new Array(Math.ceil(dataFilterLen / 20)).fill('').map((_, i) => i + 1)
     );
-    if (!location || !firstRender) {
+
+    if(!search){
+      return
+    }else{
       setTargetPage(1);
-    } else {
-      setTargetPage(location.targetPage);
-      setFirstRender(false);
     }
     // eslint-disable-next-line
   },[search]);
@@ -54,6 +57,9 @@ const TourList = () => {
       <div className="form-floating m-3">
         <button type="button" className="btn btn-outline-secondary btn-sm position-absolute top-50 end-0 translate-middle-y me-2"
           onClick={() => {
+            if(!search){
+              return
+            }
             setSearch("")
             setTargetPage(1)
           }}>X</button>
@@ -103,7 +109,7 @@ const TourList = () => {
                     </div>
                     <div className="card-img-overlay d-flex flex-column justify-content-around tourCard-img">
                       <h4>{item.Name}</h4>
-                      <h6>[◉"]　{item.Picdescribe1}　[◉"]</h6>
+                      <h6>[◉"] - {item.Picdescribe1} - [◉"]</h6>
                     </div>
                   </Link>
                 </div>
@@ -132,7 +138,7 @@ const TourList = () => {
           return (
             <li
               key={i}
-              className="d-none d-md-block {item === targetPage ? 'active' : ''}"
+              className={`d-none d-md-block ${item === targetPage ? 'active' : ''}`}
               onClick={() => {
                 setTargetPage(item);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
