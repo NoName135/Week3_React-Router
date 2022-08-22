@@ -8,6 +8,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import TourList from './components/TourList.js';
 import TourDetail from './components/TourDetail.js';
 
+
 function Layout() {
   const [isNavCollapsed, setIsNavCollapsed] = React.useState(true);
   const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);

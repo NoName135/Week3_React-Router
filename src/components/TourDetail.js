@@ -1,9 +1,12 @@
 import {useState, useEffect} from 'react';
 import {Link, useParams, useLocation} from 'react-router-dom';
+import Loading from './Loading.js';
 
 const TourDetail = () => {
   const { Id } = useParams();
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const search = useLocation().state.search;
   const page = useLocation().state.page;
   const targetPage = useLocation().state.targetPage;
@@ -19,48 +22,51 @@ const TourDetail = () => {
           return item.Id === Id;
         });
         setData(selectData[0]);
+        setLoading(false);
       });
     // eslint-disable-next-line
   }, []);
 
   return (
     <div className="container">
-      <div className="row  justify-content-center">
-        <div className="card col-8 mt-3 align-items-center">
-          <div className="card-title">
-            <h2 className="py-3">{data.Name}</h2>
-            <img src={data.Picture1} alt={data.Name} class="card-img-top" />
-          </div>
-          <div className="card-body">
-            <div
-              className="card-content mt-3"
-              style={{ display: 'block', 'text-align': 'left' }}
-            >
-              <div>
-                <p className="border-bottom border-secondary">
-                  <b>地址：</b>
-                  {data.Add}
-                </p>
-              </div>
-              <div>
-                <p className="border-bottom border-secondary">
-                  <b>電話：</b>
-                  {data.Tel}
-                </p>
-              </div>
-              <div>
-                <p className="border-bottom border-secondary">
-                  <b>營業時間：</b>
-                  {data.Opentime}
-                </p>
-              </div>
-              <div>
-                <p>{data.Description}</p>
+      {loading ? <Loading /> :
+        <div className="row  justify-content-center">
+          <div className="card col-8 mt-3 align-items-center">
+            <div className="card-title">
+              <h2 className="py-3">{data.Name}</h2>
+              <img src={data.Picture1} alt={data.Name} class="card-img-top" />
+            </div>
+            <div className="card-body">
+              <div
+                className="card-content mt-3"
+                style={{ display: 'block', 'text-align': 'left' }}
+              >
+                <div>
+                  <p className="border-bottom border-secondary">
+                    <b>地址：</b>
+                    {data.Add}
+                  </p>
+                </div>
+                <div>
+                  <p className="border-bottom border-secondary">
+                    <b>電話：</b>
+                    {data.Tel}
+                  </p>
+                </div>
+                <div>
+                  <p className="border-bottom border-secondary">
+                    <b>營業時間：</b>
+                    {data.Opentime}
+                  </p>
+                </div>
+                <div>
+                  <p>{data.Description}</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      }
       <Link
         to={`/tour`}
         state={{ search: search, page: page, targetPage: targetPage }}
