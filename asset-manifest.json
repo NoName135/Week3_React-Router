@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Week3_React-Router/static/css/main.6c6b9b59.css",
-    "main.js": "/Week3_React-Router/static/js/main.88b2c5b2.js",
+    "main.js": "/Week3_React-Router/static/js/main.9d22ecba.js",
     "static/js/787.e8cf4ead.chunk.js": "/Week3_React-Router/static/js/787.e8cf4ead.chunk.js",
     "index.html": "/Week3_React-Router/index.html",
     "main.6c6b9b59.css.map": "/Week3_React-Router/static/css/main.6c6b9b59.css.map",
-    "main.88b2c5b2.js.map": "/Week3_React-Router/static/js/main.88b2c5b2.js.map",
+    "main.9d22ecba.js.map": "/Week3_React-Router/static/js/main.9d22ecba.js.map",
     "787.e8cf4ead.chunk.js.map": "/Week3_React-Router/static/js/787.e8cf4ead.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6c6b9b59.css",
-    "static/js/main.88b2c5b2.js"
+    "static/js/main.9d22ecba.js"
   ]
 }
