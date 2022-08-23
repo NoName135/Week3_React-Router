@@ -142,7 +142,7 @@ function App() {
             <Route
               index
               element={<TourList />}
-              state={{ search: '', page: [], targetPage: 1 }}
+              
             />
             <Route path=":Id" element={<TourDetail />} />
           </Route>

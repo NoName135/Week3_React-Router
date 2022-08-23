@@ -7,9 +7,10 @@ const TourDetail = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const search = useLocation().state.search;
-  const page = useLocation().state.page;
-  const targetPage = useLocation().state.targetPage;
+  const location = useLocation().state;
+  const search = location ? location.search : null;
+  const page = location ? location.page : null;
+  const targetPage = location ? location.targetPage : null;
 
   useEffect(() => {
     fetch(
@@ -29,7 +30,9 @@ const TourDetail = () => {
 
   return (
     <div className="container">
-      {loading ? <Loading /> :
+      {loading ? (
+        <Loading />
+      ) : (
         <div className="row  justify-content-center">
           <div className="card col-8 mt-3 align-items-center">
             <div className="card-title">
@@ -66,15 +69,25 @@ const TourDetail = () => {
             </div>
           </div>
         </div>
-      }
-      <Link
-        to={`/tour`}
-        state={{ search: search, page: page, targetPage: targetPage }}
-      >
-        <button type="button" className="btn btn-success text-white my-3">
-          回列表
-        </button>
-      </Link>
+      )}
+      {location ? (
+        <Link
+          to={`/tour`}
+          state={{ search: search, page: page, targetPage: targetPage }}
+        >
+          <button type="button" className="btn btn-success text-white my-3">
+            回列表
+          </button>
+        </Link>
+      ) : (
+        <Link
+          to={`/tour`}
+        >
+          <button type="button" className="btn btn-success text-white my-3">
+            回列表
+          </button>
+        </Link>
+      )}
     </div>
   );
 
