@@ -142,7 +142,6 @@ function App() {
             <Route
               index
               element={<TourList />}
-              
             />
             <Route path=":Id" element={<TourDetail />} />
           </Route>
