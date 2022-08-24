@@ -11,6 +11,7 @@ const TourDetail = () => {
   const search = location ? location.search : null;
   const page = location ? location.page : null;
   const targetPage = location ? location.targetPage : null;
+  const recordScroll = location ? location.recordScroll : null;
 
   useEffect(() => {
     fetch(
@@ -37,12 +38,12 @@ const TourDetail = () => {
           <div className="card col-8 mt-3 align-items-center">
             <div className="card-title">
               <h2 className="py-3">{data.Name}</h2>
-              <img src={data.Picture1} alt={data.Name} class="card-img-top" />
+              <img src={data.Picture1} alt={data.Name} className="card-img-top" />
             </div>
             <div className="card-body">
               <div
                 className="card-content mt-3"
-                style={{ display: 'block', 'text-align': 'left' }}
+                style={{ display: 'block', textAlign: 'left' }}
               >
                 <div>
                   <p className="border-bottom border-secondary">
@@ -73,7 +74,7 @@ const TourDetail = () => {
       {location ? (
         <Link
           to={`/tour`}
-          state={{ search: search, page: page, targetPage: targetPage }}
+          state={{ search: search, page: page, targetPage: targetPage, recordScroll: recordScroll }}
         >
           <button type="button" className="btn btn-success text-white my-3">
             回列表

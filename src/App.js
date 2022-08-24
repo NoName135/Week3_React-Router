@@ -16,8 +16,8 @@ function Layout() {
   return (
     <div className="container-fluid bg-light text-center container-height100">
       <div className="mainArea">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary mb-3">
-          <Link to="/" class="navbar-brand px-5">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-secondary mb-3">
+          <Link to="/" className="navbar-brand px-5">
             Kaohsiung Travel
           </Link>
           <button
@@ -30,30 +30,30 @@ function Layout() {
             aria-label="Toggle navigation"
             onClick={handleNavCollapse}
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
           <div
-            class={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`}
+            className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`}
             id="navbarNav"
           >
-            <ul class="navbar-nav ms-auto me-lg-5">
-              <li class="nav-item pe-lg-5">
-                <Link to="/" class="nav-link">
+            <ul className="navbar-nav ms-auto me-lg-5">
+              <li className="nav-item pe-lg-5">
+                <Link to="/" className="nav-link">
                   Home
                 </Link>
               </li>
-              <li class="nav-item pe-lg-5">
-                <Link to="/about" class="nav-link">
+              <li className="nav-item pe-lg-5">
+                <Link to="/about" className="nav-link">
                   About
                 </Link>
               </li>
-              <li class="nav-item pe-lg-5">
-                <Link to="/FAQ" class="nav-link">
+              <li className="nav-item pe-lg-5">
+                <Link to="/FAQ" className="nav-link">
                   FAQ
                 </Link>
               </li>
-              <li class="nav-item">
-                <Link to="/Tour" class="nav-link">
+              <li className="nav-item">
+                <Link to="/Tour" className="nav-link">
                   Tour
                 </Link>
               </li>
@@ -139,10 +139,7 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="faq" element={<FAQ />} />
           <Route path="tour" element={<Tour />}>
-            <Route
-              index
-              element={<TourList />}
-            />
+            <Route index element={<TourList />} />
             <Route path=":Id" element={<TourDetail />} />
           </Route>
           <Route path="*" element={<NotFound />} />

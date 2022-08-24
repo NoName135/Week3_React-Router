@@ -11,6 +11,16 @@ const TourList = () => {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState([]);
   const [targetPage, setTargetPage] = useState(1);
+  const [recordScroll, setRecordScroll] = useState(location ? location.recordScroll : 0);
+
+  const scrollPage = () => {
+    document.addEventListener("scroll", () => {
+      setRecordScroll(window.scrollY);
+    });
+    setTimeout(() => {
+      window.scrollTo({ top: recordScroll });
+    }, 50);
+  }
 
   useEffect(() => {
     fetch(
@@ -27,6 +37,7 @@ const TourList = () => {
               .map((_, i) => i + 1)
           );
           setLoading(false);
+          scrollPage();
         } else {
           setPage(location.page);
           setSearch(location.search);
@@ -34,8 +45,10 @@ const TourList = () => {
           // 清除 React Hooks
           window.history.replaceState({}, document.title);
           setLoading(false);
+          scrollPage();
         }
       });
+
     // eslint-disable-next-line
   }, []);
 
@@ -79,8 +92,8 @@ const TourList = () => {
               }}
             />
             <label
-              for="search"
-              style={{ display: 'block', 'text-align': 'left' }}
+              htmlFor="search"
+              style={{ display: 'block', textAlign: 'left' }}
             >
               Search
             </label>
@@ -107,6 +120,7 @@ const TourList = () => {
                           search: search,
                           page: page,
                           targetPage: targetPage,
+                          recordScroll: recordScroll
                         }}
                       >
                         <div className="card bg-black card-img-radius">
@@ -128,7 +142,7 @@ const TourList = () => {
               })
           }
         </div>
-        <ul class="pagination justify-content-center my-4">
+        <ul className="pagination justify-content-center my-4">
           <li
             className={targetPage === 1 ? 'disabled' : ''}
             onClick={() => {
@@ -148,12 +162,15 @@ const TourList = () => {
                 return (
                   <li
                     key={i}
-                    className={`d-none d-md-block ${
-                      item === targetPage ? 'active' : ''
-                    }`}
+                    className={`d-none d-md-block
+                    ${item === targetPage ? 'active' : ''}`}
                     onClick={() => {
-                      setTargetPage(item);
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                      if (item === targetPage){
+                        return;
+                      }else{
+                        setTargetPage(item);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }
                     }}
                   >
                     <a className="page-link" href="#/tour">
@@ -167,8 +184,8 @@ const TourList = () => {
                 })
                 .map((item, i) => {
                   return (
-                    <li key={i} className="d-block d-md-none">
-                      <a className="page-link" disabled href={() => false}>
+                    <li key={i} className="d-block d-md-none" disabled>
+                      <a className="page-link" href="#/tour">
                         {item}
                       </a>
                     </li>
